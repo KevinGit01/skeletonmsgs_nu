@@ -1,18 +1,26 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(skeletonmsgs_nu)
 
-find_package(catkin REQUIRED COMPONENTS std_msgs geometry_msgs message_generation)
+find_package(catkin REQUIRED COMPONENTS
+  geometry_msgs
+  message_generation
+  std_msgs
+  )
 
-add_message_files(FILES 
-  SkeletonJoint.msg 
-  Skeleton.msg 
+add_message_files(FILES
+  Skeleton.msg
+  SkeletonJoint.msg
   Skeletons.msg
-)
+  )
 
 generate_messages(
-  DEPENDENCIES 
-  std_msgs 
+  DEPENDENCIES
   geometry_msgs
-)
+  std_msgs
+  )
 
-catkin_package()
+catkin_package(CATKIN_DEPENDS
+  geometry_msgs
+  message_runtime
+  std_msgs
+  )
